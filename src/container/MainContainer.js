@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { observer, inject } from "mobx-react";
 import HeaderContainer from "./HeaderContainer";
 import FooterContainer from "./FooterContainer";
+import Loading from "../component/Loading";
+import ContentContainer from "./ContentContainer";
 
 const Section = styled.section`
   background-color: #40407a;
@@ -12,15 +14,17 @@ const Section = styled.section`
 @inject("dataStore")
 @observer
 class MainContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.dataStore.getMovieData();
   }
   render() {
-    console.log(this.props.dataStore.data);
+    const { dataStore } = this.props,
+      { data } = dataStore;
+    console.log(!data[0]);
     return (
       <>
         <HeaderContainer />
-        <Section>Data</Section>
+        <Section>{data[0] ? <ContentContainer /> : <Loading />}</Section>
         <FooterContainer />
       </>
     );

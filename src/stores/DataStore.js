@@ -1,6 +1,5 @@
 import { observable, action, configure } from "mobx";
 import axios from "axios";
-import dotenv from "dotenv";
 
 configure({ enforceActions: "observed" });
 export default class DataStore {
@@ -10,16 +9,19 @@ export default class DataStore {
 
   @observable data = {};
 
-  @action setMovieData = data => {
+  @action
+  setMovieData = data => {
     this.data = data;
   };
 
   @action getMovieData() {
     axios
       .get(
-        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${process.env.KEY}&targetDt=20200223`
+        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${process.env.REACT_APP_KEY}&targetDt=20200223`
       )
-      .then(res => this.setMovieData(res.data.boxOfficeResult))
+      .then(res => {
+        this.setMovieData(res.data.boxOfficeResult.dailyBoxOfficeList);
+      })
       .catch(e => console.log(e));
   }
 }
