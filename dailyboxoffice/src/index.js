@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
 import { Provider } from "mobx-react";
-import stores from "./stores/index.js";
+import App from "./App";
+import DataStore from "./stores/DataStore";
+
+const dataStore = new DataStore();
 
 ReactDOM.render(
-  <Provider {...stores}>
+  <Provider dataStore={dataStore}>
     <App />
   </Provider>,
   document.getElementById("root")
