@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Form from "../components/content/Form";
 import Loading from "../components/content/Loading";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 
 @inject("dataStore")
+@observer
 class ContentContainer extends Component {
   componentDidMount() {
     this.props.dataStore.getData();
@@ -11,7 +12,6 @@ class ContentContainer extends Component {
   render() {
     const { dataStore } = this.props,
       { data } = dataStore;
-    console.log(dataStore);
     return <div>{!data[0] ? <Loading /> : <Form />}</div>;
   }
 }
