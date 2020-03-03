@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import ContentContainer from "./container/ContentContainer";
 function App() {
   return (
-    <div className="body_wrap">
+    <div className="body_wrapper">
       <Header />
       <ContentContainer />
       <Footer />

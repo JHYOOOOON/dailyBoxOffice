@@ -1,19 +1,67 @@
 import React, { Component } from "react";
 import Loading from "../components/content/Loading";
-import Form from "../components/content/Form";
+import Section from "../components/content/Section";
 import { inject, observer } from "mobx-react";
 
 @inject("dataStore")
 @observer
 class ContentContainer extends Component {
+  state = {
+    value: ""
+  };
+
   componentDidMount() {
     this.props.dataStore.getData();
   }
+
+  handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.handleClick();
+    }
+  };
+
+  valueChange = e => {
+    this.setState({ value: e.target.value });
+  };
+
+  handleClick = () => {
+    if (this.state.value.length !== 8) {
+      alert("Please submit right form 👽");
+      return;
+    }
+    this.props.dataStore.setDate(this.state.value);
+    this.props.dataStore.getData();
+    this.setState({ value: "" });
+  };
   render() {
-    const { dataStore } = this.props,
-      { data } = dataStore;
-    console.log(typeof data[0]);
-    return <div>{data[0] === undefined ? <Loading /> : data[0].movieNm}</div>;
+    const { dailyBoxOfficeList: data, showRange } = this.props.dataStore.data,
+      { targetDt, setDate, getDate } = this.props.dataStore;
+    let date = "";
+    if (!targetDt) setDate(getDate());
+    date = showRange === undefined ? date : showRange.substr(0, 8);
+
+    return (
+      <>
+        <div className="dateInputForm">
+          <input
+            className="dateInput"
+            type="text"
+            placeholder="YYYYMMDD"
+            value={this.state.value}
+            onChange={this.valueChange}
+            onKeyPress={this.handleKeyPress}
+          />
+          <button onClick={this.handleClick}>submit</button>
+        </div>
+        <div className="content_wrapper">
+          {data === undefined || targetDt !== date ? (
+            <Loading />
+          ) : (
+            <Section date={targetDt} />
+          )}
+        </div>
+      </>
+    );
   }
 }
 

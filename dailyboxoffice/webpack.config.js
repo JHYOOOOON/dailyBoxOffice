@@ -1,6 +1,5 @@
 // import path from 'path'
 const path = require("path");
-const autoprefixer = require("autoprefixer");
 const ExtractCSS = require("extract-text-webpack-plugin");
 
 const ENTRY_FILE = path.resolve(__dirname, "src", "index.js");
@@ -28,7 +27,11 @@ const config = {
       },
       {
         test: /\.(scss)$/,
-        use: ExtractCSS.extract(["css-loader", "postcss-loader", "sass-loader"])
+        use: ExtractCSS.extract([
+          "css-loader",
+          { loader: "postcss-loader", options: { options: {} } },
+          "sass-loader"
+        ])
       }
     ]
   },
