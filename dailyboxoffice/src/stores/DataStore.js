@@ -29,7 +29,7 @@ export default class DataStore {
   @action getData() {
     axios
       .get(
-        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${process.env.REACT_APP_KEY}&targetDt=${this.targetDt}`
+        `https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${process.env.REACT_APP_KEY}&targetDt=${this.targetDt}`
       )
       .then(res => {
         this.setData(res.data.boxOfficeResult);
