@@ -17,7 +17,6 @@ class Data extends Component {
 
   render() {
     const { dailyBoxOfficeList: data } = this.props.dataStore.data;
-    console.log(this.props.dataStore);
     return <ol>{data.map(item => this.printData(item))}</ol>;
   }
 }
