@@ -18,5 +18,6 @@
 - [x] Store setting
 - [x] Print data
 - [x] Upload App to Heroku
-- [ ] Get bugs from API
+- [x] Prevent bugs from API
+- [x] Make responsive webpage
 - [ ] Add more functions
