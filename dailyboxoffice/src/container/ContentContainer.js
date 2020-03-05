@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Loading from "../components/content/Loading";
 import Section from "../components/content/Section";
 import { inject, observer } from "mobx-react";
@@ -24,8 +24,14 @@ class ContentContainer extends Component {
     this.setState({ value: e.target.value });
   };
 
+  isNumber(s) {
+    s = s.replace(/^\s*|\s*$/g, "");
+    if (s === "" || isNaN(s)) return false;
+    return true;
+  }
   handleClick = () => {
-    if (this.state.value.length !== 8) {
+    const { value } = this.state;
+    if (value.length !== 8 || !this.isNumber(value)) {
       alert("Please submit right form 👽");
       return;
     }
@@ -41,7 +47,7 @@ class ContentContainer extends Component {
     date = showRange === undefined ? date : showRange.substr(0, 8);
 
     return (
-      <>
+      <Fragment>
         <div className="dateInputForm">
           <input
             className="dateInput"
@@ -60,7 +66,7 @@ class ContentContainer extends Component {
             <Section date={targetDt} />
           )}
         </div>
-      </>
+      </Fragment>
     );
   }
 }

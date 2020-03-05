@@ -7,14 +7,17 @@ class Data extends Component {
   printData = item => {
     return (
       <li key={item.rnum} className={item.rnum}>
-        <span>{item.rank}</span>
-        {item.movieNm}
+        <div>
+          <span className="rank">{item.rank}</span>
+        </div>
+        <span className="movieName">{item.movieNm}</span>
       </li>
     );
   };
 
   render() {
     const { dailyBoxOfficeList: data } = this.props.dataStore.data;
+    console.log(this.props.dataStore);
     return <ol>{data.map(item => this.printData(item))}</ol>;
   }
 }

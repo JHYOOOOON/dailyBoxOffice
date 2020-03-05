@@ -27,11 +27,7 @@ const config = {
       },
       {
         test: /\.(scss)$/,
-        use: ExtractCSS.extract([
-          "css-loader",
-          { loader: "postcss-loader", options: { options: {} } },
-          "sass-loader"
-        ])
+        use: ExtractCSS.extract(["css-loader", "sass-loader"])
       }
     ]
   },
