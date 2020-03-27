@@ -119,13 +119,11 @@ body {
               font-weight: 900;
               color: rgb(252, 252, 252);
             }
+            .rank.rankNm10 {
+              padding: 5px;
+            }
             &:first-child {
               padding-top: 10px;
-            }
-            &:last-child {
-              .rank {
-                padding: 5px;
-              }
             }
           } // li
         } // ol

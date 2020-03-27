@@ -5,6 +5,7 @@ configure({ enforceActions: "observed" });
 export default class DataStore {
   @observable data = {};
   @observable targetDt = "";
+  @observable flag = false;
 
   @action setData = data => {
     this.data = data;
@@ -15,10 +16,10 @@ export default class DataStore {
   };
 
   @action getDate() {
-    const date = new Date();
-    const year = date.getFullYear();
-    let month = String(date.getMonth() + 1);
-    let day = String(date.getDay());
+    let date = new Date();
+    let year = date.getUTCFullYear();
+    let month = String(date.getUTCMonth() + 1);
+    let day = String(date.getUTCDate());
 
     month = month.length === 1 ? "0" + month : month;
     day = day.length === 1 ? "0" + day : day;

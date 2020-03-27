@@ -6,9 +6,9 @@ import { inject, observer } from "mobx-react";
 class Data extends Component {
   printData = item => {
     return (
-      <li key={item.rnum} className={item.rnum}>
+      <li key={item.rnum}>
         <div>
-          <span className="rank">{item.rank}</span>
+          <span className={`rank rankNm${item.rank}`}>{item.rank}</span>
         </div>
         <span className="movieName">{item.movieNm}</span>
       </li>
