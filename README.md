@@ -1,7 +1,7 @@
 # Daily Box Office App
 
 <h3>✔️ Click this link</h3>
-[DailyBoxOffice](https://daily-box-office.herokuapp.com/)
+[DailyBoxOffice](https://dailyboxoffice.herokuapp.com/)
 <br/>
 
 <h2>🎥 Function</h2>
