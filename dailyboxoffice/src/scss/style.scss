@@ -19,6 +19,8 @@
 }
 
 body {
+  vertical-align: auto;
+  min-width: 120px;
   font-family: "Nanum Gothic", sans-serif;
   background-color: #ecf0f1;
   .body_wrapper {
@@ -43,7 +45,7 @@ body {
       justify-content: space-around;
       width: 100%;
       height: 30px;
-      margin: 0 2px 8px 2px;
+      margin: 5px 5px;
       input {
         padding: 2px;
         width: 78%;
@@ -59,8 +61,8 @@ body {
         }
       }
       button {
-        margin-right: 3px;
         background-color: #d1c4e9;
+        margin-right: 10px;
         border: none;
         border-radius: 3px;
         color: white;
@@ -71,7 +73,7 @@ body {
     .content_wrapper {
       height: 100%;
       .loading {
-        padding: 100px 20px 140px 20px;
+        padding: 100px 10px 140px 10px;
         margin: 0 auto;
       }
       section {
